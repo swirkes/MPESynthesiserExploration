@@ -289,12 +289,6 @@ public:
         level.setTargetValue(currentlyPlayingNote.pressure.asUnsignedFloat());
         frequency.setTargetValue(currentlyPlayingNote.getFrequencyInHertz());
         timbre.setTargetValue(currentlyPlayingNote.timbre.asUnsignedFloat());
-
-//        phase = 0.0;
-//        auto cyclesPerSample = frequency.getNextValue() / currentSampleRate;
-//        phaseDelta = 2.0 * MathConstants<double>::pi * cyclesPerSample;
-
-        //tailOff = 0.0;
         
         
     }
