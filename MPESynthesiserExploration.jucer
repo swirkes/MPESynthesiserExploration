@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT name="MPESynthesiserExploration" companyName="JUCE" version="1.0.0"
+              userNotes="Synthesiser using MPE specifications." companyWebsite="http://juce.com"
+              defines="" projectType="guiapp" id="l5cmuD" jucerVersion="5.4.7">
+  <MAINGROUP id="xEaxVX" name="MPESynthesiserExploration">
+    <GROUP id="{90AF3AB3-C1AD-A7A9-8039-26F1CB50E6AD}" name="Source">
+      <GROUP id="{58C0831B-8F41-CB89-F858-225D5FB0BC5F}" name="Maximilian">
+        <GROUP id="{DEF6501D-6D88-A29B-6C97-7DE90422FD86}" name="libs">
+          <FILE id="VCcl8D" name="fft.cpp" compile="1" resource="0" file="Source/Maximilian/libs/fft.cpp"/>
+          <FILE id="D53Lq8" name="fft.h" compile="0" resource="0" file="Source/Maximilian/libs/fft.h"/>
+          <FILE id="eqfyd8" name="maxiAtoms.cpp" compile="1" resource="0" file="Source/Maximilian/libs/maxiAtoms.cpp"/>
+          <FILE id="klr2xb" name="maxiAtoms.h" compile="0" resource="0" file="Source/Maximilian/libs/maxiAtoms.h"/>
+          <FILE id="QNpfjE" name="maxiBark.cpp" compile="1" resource="0" file="Source/Maximilian/libs/maxiBark.cpp"/>
+          <FILE id="xFYzFq" name="maxiBark.h" compile="0" resource="0" file="Source/Maximilian/libs/maxiBark.h"/>
+          <FILE id="yxfyh0" name="maxiFFT.cpp" compile="1" resource="0" file="Source/Maximilian/libs/maxiFFT.cpp"/>
+          <FILE id="Kn2Lch" name="maxiFFT.h" compile="0" resource="0" file="Source/Maximilian/libs/maxiFFT.h"/>
+          <FILE id="yhhl3R" name="maxiGrains.cpp" compile="1" resource="0" file="Source/Maximilian/libs/maxiGrains.cpp"/>
+          <FILE id="sLcHzX" name="maxiGrains.h" compile="0" resource="0" file="Source/Maximilian/libs/maxiGrains.h"/>
+          <FILE id="QnJXTO" name="maxim.h" compile="0" resource="0" file="Source/Maximilian/libs/maxim.h"/>
+          <FILE id="iP6hOP" name="maxiMFCC.cpp" compile="1" resource="0" file="Source/Maximilian/libs/maxiMFCC.cpp"/>
+          <FILE id="sZprGi" name="maxiMFCC.h" compile="0" resource="0" file="Source/Maximilian/libs/maxiMFCC.h"/>
+          <FILE id="l5XBVT" name="sineTable.h" compile="0" resource="0" file="Source/Maximilian/libs/sineTable.h"/>
+        </GROUP>
+        <FILE id="go5v0k" name="main.cpp" compile="1" resource="0" file="Source/Maximilian/main.cpp"/>
+        <FILE id="hzHPWX" name="maximilian.cpp" compile="1" resource="0" file="Source/Maximilian/maximilian.cpp"/>
+        <FILE id="em9C7q" name="maximilian.h" compile="0" resource="0" file="Source/Maximilian/maximilian.h"/>
+        <FILE id="MjzUxi" name="README" compile="0" resource="1" file="Source/Maximilian/README"/>
+      </GROUP>
+      <FILE id="XM4CEh" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="iZHZyi" name="MPESynthesiserExploration.h" compile="0" resource="0"
+            file="Source/MPESynthesiserExploration.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="MPEIntroductionTutorial"
+                       headerPath="/Users/shanewirkes/OneDriveTAMK/Spring2020/MPE/JUCETutorials/MPEIntroductionTutorial/Source"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="MPEIntroductionTutorial"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path=""/>
+        <MODULEPATH id="juce_audio_devices" path=""/>
+        <MODULEPATH id="juce_audio_formats" path=""/>
+        <MODULEPATH id="juce_audio_processors" path=""/>
+        <MODULEPATH id="juce_audio_utils" path=""/>
+        <MODULEPATH id="juce_core" path=""/>
+        <MODULEPATH id="juce_data_structures" path=""/>
+        <MODULEPATH id="juce_events" path=""/>
+        <MODULEPATH id="juce_graphics" path=""/>
+        <MODULEPATH id="juce_gui_basics" path=""/>
+        <MODULEPATH id="juce_gui_extra" path=""/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <VS2017 targetFolder="Builds/VisualStudio2017">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="MPEIntroductionTutorial"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="MPEIntroductionTutorial"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path=""/>
+        <MODULEPATH id="juce_audio_devices" path=""/>
+        <MODULEPATH id="juce_audio_formats" path=""/>
+        <MODULEPATH id="juce_audio_processors" path=""/>
+        <MODULEPATH id="juce_audio_utils" path=""/>
+        <MODULEPATH id="juce_core" path=""/>
+        <MODULEPATH id="juce_data_structures" path=""/>
+        <MODULEPATH id="juce_events" path=""/>
+        <MODULEPATH id="juce_graphics" path=""/>
+        <MODULEPATH id="juce_gui_basics" path=""/>
+        <MODULEPATH id="juce_gui_extra" path=""/>
+      </MODULEPATHS>
+    </VS2017>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="MPEIntroductionTutorial"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="MPEIntroductionTutorial"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path=""/>
+        <MODULEPATH id="juce_audio_devices" path=""/>
+        <MODULEPATH id="juce_audio_formats" path=""/>
+        <MODULEPATH id="juce_audio_processors" path=""/>
+        <MODULEPATH id="juce_audio_utils" path=""/>
+        <MODULEPATH id="juce_core" path=""/>
+        <MODULEPATH id="juce_data_structures" path=""/>
+        <MODULEPATH id="juce_events" path=""/>
+        <MODULEPATH id="juce_graphics" path=""/>
+        <MODULEPATH id="juce_gui_basics" path=""/>
+        <MODULEPATH id="juce_gui_extra" path=""/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+  </EXPORTFORMATS>
+  <JUCEOPTIONS/>
+  <LIVE_SETTINGS>
+    <OSX/>
+  </LIVE_SETTINGS>
+</JUCERPROJECT>
