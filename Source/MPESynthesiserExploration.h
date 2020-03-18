@@ -367,7 +367,32 @@ public:
         {
             
             
-            float wave1 = osc1.sinebuf(frequency.getNextValue());
+            float wave1 = 0;
+            float pressure = currentlyPlayingNote.pressure.asUnsignedFloat();
+            
+            if (currentlyPlayingNote.pressure.asUnsignedFloat() <= 0.2)
+            {
+                wave1 = osc1.sinebuf(frequency.getNextValue());
+            }
+            else if (currentlyPlayingNote.pressure.asUnsignedFloat() > 0.2 && currentlyPlayingNote.pressure.asUnsignedFloat() <= 0.4 )
+            {
+                wave1 = (osc1.sinebuf(frequency.getNextValue()) + osc2.sinebuf(frequency.getNextValue() * 2)) * (level.getNextValue() * 0.5);
+            }
+            else if (currentlyPlayingNote.pressure.asUnsignedFloat() > 0.4 && currentlyPlayingNote.pressure.asUnsignedFloat() <= 0.6 )
+            {
+                wave1 = (osc1.sinebuf(frequency.getNextValue()) + osc2.sinebuf(frequency.getNextValue() * 2) + osc3.sinebuf(frequency.getNextValue() * 3)) * (level.getNextValue() * 0.33);
+            }
+            else if (currentlyPlayingNote.pressure.asUnsignedFloat() > 0.6 && currentlyPlayingNote.pressure.asUnsignedFloat() <= 0.8 )
+            {
+                wave1 = (osc1.sinebuf(frequency.getNextValue()) + osc2.sinebuf(frequency.getNextValue() * 2) + osc3.sinebuf(frequency.getNextValue() * 3) + osc4.sinebuf(frequency.getNextValue() * 4)) * (level.getNextValue() * 0.25);
+            }
+            else
+            {
+                wave1 = (osc1.sinebuf(frequency.getNextValue()) + osc2.sinebuf(frequency.getNextValue() * 2) + osc3.sinebuf(frequency.getNextValue() * 3) + osc4.sinebuf(frequency.getNextValue() * 4) + osc5.sinebuf(frequency.getNextValue() * 5)) * (level.getNextValue() * 0.2);
+            }
+            
+            //wave1 = osc1.sinebuf(frequency.getNextValue());
+            
             float sound1 = env1.adsr(wave1, env1.trigger) * level.getNextValue();
             //float filteredsound1 = filter1.hires(sound1, 200, timbre.getNextValue());
             
@@ -427,6 +452,7 @@ private:
 
 //==============================================================================
 class MainComponent : public Component,
+                      public Timer,
                       private AudioIODeviceCallback,  // [1]
                       private MidiInputCallback       // [2]
 {
@@ -440,7 +466,12 @@ public:
         audioDeviceManager.initialise (0, 2, nullptr, true, {}, nullptr);
         audioDeviceManager.addMidiInputDeviceCallback ({}, this); // [6]
         audioDeviceManager.addAudioCallback (this);
-
+        
+        cpuUsageLabel.setText ("CPU Usage", dontSendNotification);
+        //cpuUsageText.setJus
+        addAndMakeVisible (cpuUsageLabel);
+        addAndMakeVisible (cpuUsageText);
+        
         addAndMakeVisible (audioSetupComp);
         addAndMakeVisible (visualiserViewport);
 
@@ -457,8 +488,13 @@ public:
         synth.setVoiceStealingEnabled (false);
 
         visualiserInstrument.enableLegacyMode (24);
-
+        
+        
         setSize (650, 560);
+        startTimer(50);
+        
+
+        
     }
 
     ~MainComponent() override
@@ -479,8 +515,16 @@ public:
                                     visualiserViewport.getHeight() - visualiserViewport.getScrollBarThickness() });
 
         audioSetupComp.setBounds (r);
+        
+        cpuUsageLabel.setBounds (10, 10, getWidth() - 20, 20);
+        cpuUsageText .setBounds (10, 30, getWidth() - 20, 20);
     }
 
+    void timerCallback() override
+    {
+        auto cpu = audioDeviceManager.getCpuUsage() * 100;
+        cpuUsageText.setText (String (cpu, 2) + " %", dontSendNotification);
+    }
     //==============================================================================
     void audioDeviceIOCallback (const float** /*inputChannelData*/, int /*numInputChannels*/,
                                 float** outputChannelData, int numOutputChannels,
@@ -509,8 +553,13 @@ public:
     }
 
     void audioDeviceStopped() override {}
+    
+    
 
 private:
+    
+    Label cpuUsageLabel;
+    Label cpuUsageText;
     //==============================================================================
     void handleIncomingMidiMessage (MidiInput* /*source*/,
                                     const MidiMessage& message) override
@@ -529,6 +578,8 @@ private:
     MPEInstrument visualiserInstrument;
     MPESynthesiser synth;
     MidiMessageCollector midiCollector;            // [5]
-
+    
+    
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
